@@ -111,8 +111,46 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
+        <h3>Update pet:</h3>
+        <form action="/updatePetById" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="id" class="form-label">ID number</label>
+                <input type="number" class="form-control" id="id" name="id" required>
+                @error('id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <label for="name" class="form-label">Name</label>
+                <input type="string" class="form-control" id="name" name="name" required>
+                @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <label for="status" class="form-label">Availability</label></br>
+                <select id="status" name="status">
+                    <option value="available">available</option>
+                    <option value="pending">pending</option>
+                    <option value="sold">sold</option>
+                    </select>
+                @error('status')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+        <h3>Delete pet by id:</h3>
+            <form action="/deletePet" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="id" class="form-label">ID number</label>
+                    <input type="number" class="form-control" id="id" name="id" required>
+                    @error('id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <button type="submit" class="btn btn-primary">Delete</button>
+            </form>
         </div>
     </div>
 @endsection

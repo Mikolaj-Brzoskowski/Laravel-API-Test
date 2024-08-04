@@ -90,6 +90,21 @@ class PetController extends Controller
         }
     }
 
+    public function updatePetById(Request $request) {
+        $res = Http::put("https://petstore.swagger.io/v2/pet/",
+        [
+            'id' => $request->input('id'),
+            'name' => $request->input('name'),
+            'status' => $request->input('status'),
+        ]);
+
+        if ($res->successful()) {
+            return redirect()->route('pets.index')->with('success', 'Pet updated successfully!');
+        } else {
+            return redirect()->route('pets.index')->with('error', 'Failed to updated pet. Please try again.');
+        }
+    }
+
     public function deletePet(Request $request) {
         $data = $request->all();
         $res = Http::delete("https://petstore.swagger.io/v2/pet/" . $data['id']);

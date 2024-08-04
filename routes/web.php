@@ -11,6 +11,5 @@ Route::get('/status', [PetController::class, 'status'])->name('pets.status');
 Route::post('/image', [PetController::class, 'uploadImage']);
 Route::post('/addPet', [PetController::class, 'addPet']);
 Route::post('/updatePet', [PetController::class, 'updatePet']);
-
-Route::post('/updatePetById', [PetController::class, '']);
-Route::post('/deletePet', [PetController::class, '']);
+Route::post('/updatePetById', [PetController::class, 'updatePetById']);
+Route::post('/deletePet', [PetController::class, 'deletePet']);
